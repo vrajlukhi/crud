@@ -17,5 +17,33 @@
         <input type="text" name="image"><br><br>
         <input type="submit">
     </form>
+    <script>
+        fetch("/alldata")
+        .then((res) => res.json())
+        .then((data) => {
+            data.map((ele) => {
+                console.log(data)
+                let img = document.createElement("img")
+                img.src = ele.image;
+                let name = document.createElement("h3")
+                name.innerHTML = ele.name;
+                let email = document.createElement("h4")
+                email.innerHTML = ele.email;
+                let phone = document.createElement("h5")
+                name.innerHTML = ele.phone;
+                let dbtn = document.createElement("button")
+                dbtn.innerHTML = "delete"
+                dbtn.addEventListener("click" , () =>{
+                    fetch(`/delete/${ele._id}`,{
+                        method : "DELETE"
+                    })
+                })
+                let div = document.createElement("div") 
+                div.append(img , name , email , phone , dbtn)
+    
+                document.getElementById("datas").append(div)
+            })
+        })
+    </script>
 </body>
 </html>

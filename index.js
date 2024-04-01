@@ -8,6 +8,6 @@ app.set("view engine" , "ejs");
 app.set("views" + __dirname + "/views");
 app.use(Route)
 app.listen(8090 , () =>{
-    console.log("port is start 8090");
+    console.log("start 8090");
     connect();
 })
